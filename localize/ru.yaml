@@ -1,0 +1,44 @@
+#command descriptions
+pet:         Погладить ктого-то
+blur:        Сделеать картинку или аватар размытым
+clear:       Удалить сообщения
+demotivator: Создать демотиватор
+invite:      Показать инфу об инвайте
+screenshot:  Сделать ФЕЙКОВЫЙ скрин сообщения
+about:       Информация о боте
+clicker:     Кликай :)
+user:        Информация о юзере
+
+#command parameters
+amount: кол-во
+usr:    юзер
+image:  картинка
+power:  интенсивность
+text:   текст
+inv:    инвайт
+
+#command responses
+cls:        Чистка...
+done:       Готово
+no_descr:   Описания нету
+inviter:    Пригласил
+file_only:  В сообщении есть только файлы, бот не может их показать
+bot:        БОТ
+started_at: Запущен
+ping:       Пинг
+servs:      серверов
+madeby:     Разработчик
+acc_made:   Аккаунт был создан
+came:       Пришел на сервер
+clicks:     кликов
+total:      Всего
+
+#error messages
+usr_and_img:    Ты можешь выдрать юзера ИЛИ картинку, не всё сразу
+not_urs_or_img: Выбери юзера ИЛИ картинку
+format_err:     Можно только jpg и png
+usr_perm_error: Ты не можешь использовать эту команду
+dm_cmd:         Ты не можешь использовать команды в ЛС
+bot_perm_err:   Боту нужно больше прав что бы 
+invalid_invite: Этот инвайт не правильный
+unknown:        Произошло что то странное

@@ -1,0 +1,44 @@
+#command descriptions
+pet:         Pet someone
+blur:        Blur image or avatar
+clear:       Delete messages
+demotivator: Make demotivator
+invite:      Show invite info
+screenshot:  Makes FAKE screenshot of message
+about:       Bot info
+clicker:     Let's click :)
+user:        User info
+
+#command parameters
+amount: amount
+usr:    user
+image:  image
+power:  power
+text:   text
+inv:    invite_code
+
+#command responses
+cls:        Clearing...
+done:       Done
+no_descr:   There is no description
+inviter:    Inviter
+file_only:  This message has only files, bot can't show that
+bot:        BOT
+started_at: Started
+ping:       Ping
+servs:      servers
+madeby:     Developer
+acc_made:   Account was made
+came:       Comed to server
+clicks:     clicks
+total:      Total
+
+#error messages
+usr_and_img:    You can select user's avatar OR image, not both
+not_usr_or_img: Provide user OR image
+format_err:     Only jpg and png
+usr_perm_error: You can't use this command
+dm_cmd:         Commands can't be used in DM
+bot_perm_err:   Bot needs more permissions to execute command
+invalid_invite: This invite code is not valid
+unknown:        Something weird happened
