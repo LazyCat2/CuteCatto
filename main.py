@@ -60,6 +60,8 @@ async def on_ready():
         else:
             print(x, 'is loaded')
 
+    await bot.change_presence(activity=disnake.Game(name='with cats :3'))
+
     print('Ready')
 
 

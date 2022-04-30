@@ -95,7 +95,10 @@ def translate(lang, id, **kwargs):
             isinstance(lang, disnake.ApplicationCommandInteraction) or
             isinstance(lang, disnake.MessageInteraction)
     ):
-        lang = get_lang(lang.guild.id)
+        if lang.guild:
+            lang = get_lang(lang.guild.id)
+        else:
+            lang = 'en'
 
     if isinstance(lang, disnake.Guild):
         lang = get_lang(lang.id)
