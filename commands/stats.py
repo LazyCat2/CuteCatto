@@ -30,7 +30,8 @@ class Stats(commands.Cog):
 {translate(ctx, 'ping')}: {round(bot.latency * 1000)} ms
 {len(bot.guilds)} {translate(ctx, 'servs')}
 {translate(ctx, 'madeby')}: {await bot.fetch_user(850367233582301194)}
-'''), view=view)
+''',
+                color=disnake.Color.blurple()), view=view)
 
 
 # [[Github]](https://github.com/Woolbex/catbot)
