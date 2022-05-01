@@ -1,3 +1,4 @@
+import os.path
 from __main__ import *
 
 import disnake
@@ -9,6 +10,7 @@ def get_lang(id):
 
 
 def download(url, path):
+    if os.path.exists(path): return
     with open(path, 'w'): ...
     with open(path, 'wb') as f:
         f.write(requests.get(url).content)

@@ -24,14 +24,16 @@ class Stats(commands.Cog):
             view.add_item(gh)
             view.add_item(srv)
 
-            await ctx.send(embed=disnake.Embed(
+            embed = disnake.Embed(
                 description=f'''
 {translate(ctx, 'started_at')} <t:{start_at}:R>
 {translate(ctx, 'ping')}: {round(bot.latency * 1000)} ms
 {len(bot.guilds)} {translate(ctx, 'servs')}
 {translate(ctx, 'madeby')}: {await bot.fetch_user(850367233582301194)}
-''',
-                color=disnake.Color.blurple()), view=view)
+''', color=disnake.Color.blurple())
+            embed.set_image(bot.user.avatar_url)
+
+            await ctx.send(embed=embed, view=view)
 
 
 # [[Github]](https://github.com/Woolbex/catbot)
