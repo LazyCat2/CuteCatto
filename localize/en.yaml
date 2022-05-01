@@ -1,3 +1,5 @@
+this: English
+
 #command descriptions
 pet:         Pet someone
 blur:        Blur image or avatar
@@ -8,6 +10,7 @@ screenshot:  Makes FAKE screenshot of message
 about:       Bot info
 clicker:     Let's click :)
 user:        User info
+settings:    Change bot's settigs
 
 #command parameters
 amount: amount
@@ -32,13 +35,16 @@ acc_made:   Account was made
 came:       Comed to server
 clicks:     clicks
 total:      Total
+current:    Current language is
+stng:       Settings
 
 #error messages
 usr_and_img:    You can select user's avatar OR image, not both
 not_usr_or_img: Provide user OR image
 format_err:     Only jpg and png
-usr_perm_error: You can't use this command
+usr_perm_err:   You can't use this command
 dm_cmd:         Commands can't be used in DM
 bot_perm_err:   Bot needs more permissions to execute command
 invalid_invite: This invite code is not valid
 unknown:        Something weird happened
+wrong:          It's not for you

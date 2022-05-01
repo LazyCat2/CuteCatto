@@ -81,17 +81,13 @@ async def clear(ctx, amount: int = commands.param(
     await ctx.edit_original_message(content=translate(ctx, 'done'))
 
 
-@bot.slash_command(guild_ids=guild)
-async def restart(ctx):
-    await ctx.send('Перезапуск', ephemeral=True)
-    os.execl(sys.executable, sys.executable, *sys.argv)
-
-
 @bot.event
 async def on_slash_command_error(ctx: disnake.MessageCommandInteraction, error):
     print(error, ':', type(error))
     if type(error) == commands.errors.CheckFailure: return
     a = errors.get(type(error)) or errors_text.get(str(error))
+    if a:
+        a = translate(ctx, a)
 
     await ctx.send(a or translate(ctx, 'unknown'), ephemeral=True)
 

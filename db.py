@@ -10,7 +10,7 @@ class Data:
             with open(f'db/{self.data}.yaml', 'w') as f: f.write('')
         self.json = yaml.safe_load(open(f'db/{self.data}.yaml')) or {}
         self.json = {
-            'lang': 'en'
+            'lang': self.json.get('lang', 'en')
         }
         return self.json
 
