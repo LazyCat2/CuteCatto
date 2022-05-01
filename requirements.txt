@@ -1,10 +1,7 @@
 Pillow
-captcha
 disnake
 asyncio
 pyyaml
-flask==1.1.4
-flask-sockets
 requests
 simpledemotivators
 pet-pet-gif

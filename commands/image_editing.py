@@ -28,17 +28,16 @@ class ImageCommands(commands.Cog):
         @bot.slash_command(description='Делает демотиватор')
         async def demotivator(
                 ctx,
+                text,
                 user: disnake.User = commands.param(name='юзер', default=None),
-                image: disnake.Attachment = commands.param(name='картинка', default=None),
-                text1=commands.param(name='текст1'),
-                text2=commands.param(name='текст2', default='')
+                image: disnake.Attachment = commands.param(name='картинка', default=None)
         ):
             await ctx.response.defer()
             _, inp, out = await handle_image(ctx, user, image)
 
             if not _: return
 
-            a = Demotivator(text1, text2)
+            a = Demotivator(text, '')
             a.create(inp, use_url=False, font_name='font.ttf',
                      result_filename=out)
 

@@ -10,22 +10,7 @@ class Data:
             with open(f'db/{self.data}.yaml', 'w') as f: f.write('')
         self.json = yaml.safe_load(open(f'db/{self.data}.yaml')) or {}
         self.json = {
-            'users': self.json.get('users', []),
-            'roles': self.json.get('roles', []),
-            'verify': self.json.get('verify', False),
-            'verify-role': self.json.get('verify-role', None),
-            'items': self.json.get('items', {}),
-            'reports': self.json.get('reports', {
-                'enb': False,
-                'channel': None
-            }),
-            'lang': 'en',
-            'adm-req': self.json.get('adm-req', {
-                'enb': False,
-                'form': [],
-                'cnl': 0,
-                'sent': []
-            })
+            'lang': 'en'
         }
         return self.json
 
