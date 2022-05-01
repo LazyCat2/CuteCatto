@@ -37,6 +37,7 @@ clicks:     clicks
 total:      Total
 current:    Current language is
 stng:       Settings
+server:     Support server
 
 #error messages
 usr_and_img:    You can select user's avatar OR image, not both

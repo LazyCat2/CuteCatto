@@ -37,6 +37,7 @@ clicks:     кликов
 total:      Всего
 current:   'Используемый язык - '
 stng:       Настройки
+server:     Сервер
 
 #error messages
 usr_and_img:    Ты можешь выдрать юзера ИЛИ картинку, не всё сразу
