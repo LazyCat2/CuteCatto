@@ -1,5 +1,6 @@
 import random
 import string
+import threading
 import db
 import disnake
 import os
@@ -17,6 +18,9 @@ from tools import (
     get_lang, image_color, download, handle_image,
     translate, localize, screenshot, reload_localization
 )
+
+if not os.path.exists('tmp/'):
+    os.mkdir('tmp')
 
 
 @tasks.loop(seconds=60)
@@ -61,7 +65,6 @@ async def on_ready():
             print(x, 'is loaded')
 
     await bot.change_presence(activity=disnake.Game(name='with cats :3'))
-
     print('Ready')
 
 
