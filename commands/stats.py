@@ -31,7 +31,7 @@ class Stats(commands.Cog):
 {len(bot.guilds)} {translate(ctx, 'servs')}
 {translate(ctx, 'madeby')}: {await bot.fetch_user(850367233582301194)}
 ''', color=disnake.Color.blurple())
-            embed.set_image(bot.user.avatar_url)
+            embed.set_image(bot.user.avatar.url)
 
             await ctx.send(embed=embed, view=view)
 
