@@ -62,7 +62,7 @@ class Select(disnake.ui.Select):
         self.add_option(
             label=translate(ctx, 'lang'),
             description=translate(ctx, 'this'),
-            emoji=translate(ctx, 'emj'),
+            #  emoji=translate(ctx, 'emj'),
             default=default == 'lang',
             value='lang'
         )
@@ -71,7 +71,7 @@ class Select(disnake.ui.Select):
             self.add_option(
                 label=translate(ctx, 'wlcm'),
                 description=d['wlcm_text'][:100].replace('\n', ' ') or translate(ctx, 'empty'),
-                emoji='👋' if d['wlcm_cnl'] and  d['wlcm_text'] and d['wlcm_enb'] else '🚪',
+                #  emoji='👋' if d['wlcm_cnl'] and  d['wlcm_text'] and d['wlcm_enb'] else '🚪',
                 default=default == 'wlcm',
                 value='wlcm'
             )
