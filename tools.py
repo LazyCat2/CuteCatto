@@ -1,4 +1,4 @@
-import os.path
+import os.path, yaml
 from __main__ import *
 
 import disnake

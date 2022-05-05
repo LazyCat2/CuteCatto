@@ -1,4 +1,5 @@
 this: English
+emj: 🇬🇧
 
 #command descriptions
 pet:         Pet someone
@@ -21,23 +22,33 @@ text:   text
 inv:    invite_code
 
 #command responses
-cls:        Clearing...
-done:       Done
-no_descr:   There is no description
-inviter:    Inviter
-file_only:  This message has only files, bot can't show that
-bot:        BOT
-started_at: Started
-ping:       Ping
-servs:      servers
-madeby:     Developer
-acc_made:   Account was made
-came:       Comed to server
-clicks:     clicks
-total:      Total
-current:    Current language is
-stng:       Settings
-server:     Support server
+cls:             Clearing...
+done:            Done
+no_descr:        There is no description
+inviter:         Inviter
+file_only:       This message has only files, bot can't show that
+bot:             BOT
+started_at:      Started
+ping:            Ping
+servs:           servers
+madeby:          Developer
+acc_made:        Account was made
+came:            Comed to server
+clicks:          clicks
+total:           Total
+current:         Current language is
+stng:            Settings
+server:          Support server
+slct_stng:       Select settings tab
+lang:            Bot language
+wlcm:            Welcome message
+wlcm_text:       Welcome text
+empty:           Empty
+enb:             Turn on
+dsb:             Turn off
+edit_wlcm_text:  Edit welcome text
+set_crnt_cnl:    Set to current channel
+wlcm_text_hint: '@user will become a user ping'
 
 #error messages
 usr_and_img:    You can select user's avatar OR image, not both

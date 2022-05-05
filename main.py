@@ -1,22 +1,14 @@
 import random
 import string
-import threading
 import db
 import disnake
 import os
-import requests
-import sys
 import time
-import yaml
 
-from datetime import datetime as dt
-from PIL import Image, ImageFilter, ImageDraw, ImageFont
 from disnake.ext import commands, tasks
 from petpetgif import petpet
-from simpledemotivators import Demotivator
 from tools import (
-    get_lang, image_color, download, handle_image,
-    translate, localize, screenshot, reload_localization
+    translate, localize, reload_localization, download, image_color
 )
 
 if not os.path.exists('tmp/'):
@@ -33,7 +25,9 @@ async def clear_():
             print(path, 'removed')
 
 
-bot = commands.InteractionBot(sync_commands=False)
+intents = disnake.Intents.default()
+intents.members = True
+bot = commands.InteractionBot(sync_commands=False, intents=intents)
 start_at = round(time.time())
 guild = [937021403096551494]
 
@@ -46,6 +40,7 @@ errors_text = {
     'Command raised an exception: Forbidden: 403 Forbidden (error code: 50013): Missing Permissions'
     : 'bot_perm_err'
 }
+disnake.Embed.set_default_color(disnake.Color.blurple())
 
 
 @bot.event
@@ -85,7 +80,7 @@ async def clear(ctx, amount: int = commands.param(
 
 
 @bot.event
-async def on_slash_command_error(ctx: disnake.MessageCommandInteraction, error):
+async def on_slash_command_error_(ctx: disnake.MessageCommandInteraction, error):
     print(error, ':', type(error))
     if type(error) == commands.errors.CheckFailure: return
     a = errors.get(type(error)) or errors_text.get(str(error))
@@ -93,6 +88,13 @@ async def on_slash_command_error(ctx: disnake.MessageCommandInteraction, error):
         a = translate(ctx, a)
 
     await ctx.send(a or translate(ctx, 'unknown'), ephemeral=True)
+
+
+@bot.event
+async def on_member_join(member):
+    with db.Data(member.guild.id) as d:
+        if d['wlcm_cnl'] and d['wlcm_text'] and d['wlcm_enb']:
+            await bot.get_channel(int(d['wlcm_cnl'])).send(d['wlcm_text'].replace('@user', member.mention))
 
 
 @bot.application_command_check()
@@ -103,4 +105,4 @@ async def check_commands(ctx):
     return True
 
 
-bot.run(open('token.txt').read())
+bot.run(open('token_test.txt').read())
