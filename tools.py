@@ -1,5 +1,5 @@
 import os.path, yaml, requests
-from PIL import Image, ImageFilter
+from PIL import Image, ImageFilter, ImageDraw, ImageFont
 from __main__ import *
 
 import disnake

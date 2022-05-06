@@ -8,7 +8,7 @@ import time
 from disnake.ext import commands, tasks
 from petpetgif import petpet
 from tools import (
-    translate, localize, reload_localization, download, image_color
+    translate, localize, reload_localization, download, image_color, screenshot
 )
 
 if not os.path.exists('tmp/'):
