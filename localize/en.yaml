@@ -49,6 +49,7 @@ dsb:             Turn off
 edit_wlcm_text:  Edit welcome text
 set_crnt_cnl:    Set to current channel
 wlcm_text_hint: '@user will become a user ping'
+door_and_wave:  "🚪 - Message won't be sent\n👋 - Message will be sent"
 
 #error messages
 usr_and_img:    You can select user's avatar OR image, not both

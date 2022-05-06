@@ -1,4 +1,5 @@
-import os.path, yaml
+import os.path, yaml, requests
+from PIL import Image, ImageFilter
 from __main__ import *
 
 import disnake
