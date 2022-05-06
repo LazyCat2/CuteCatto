@@ -100,6 +100,9 @@ async def check_commands(ctx):
     if not ctx.guild:
         await ctx.send(translate(ctx, 'dm_cmd'), ephemeral=True)
         return False
+    if ctx.author.id in [918887384869924995]:
+        await ctx.send(translate(ctx, 'bot_ban'), ephemeral=True)
+        return False
     return True
 
 

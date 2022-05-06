@@ -61,3 +61,4 @@ bot_perm_err:   Bot needs more permissions to execute command
 invalid_invite: This invite code is not valid
 unknown:        Something weird happened
 wrong:          It's not for you
+bot_ban:        You banned from using commands
