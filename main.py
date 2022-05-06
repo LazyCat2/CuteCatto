@@ -7,9 +7,7 @@ import time
 
 from disnake.ext import commands, tasks
 from petpetgif import petpet
-from tools import (
-    translate, localize, reload_localization, download, image_color, screenshot
-)
+from tools import *
 
 if not os.path.exists('tmp/'):
     os.mkdir('tmp')

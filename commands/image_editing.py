@@ -1,5 +1,6 @@
 from __main__ import *
 from PIL import Image, ImageDraw
+from simpledemotivators import Demotivator
 
 class ImageCommands(commands.Cog):
     def __init__(self, bot):
