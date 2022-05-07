@@ -27,11 +27,11 @@ class ImageCommands(commands.Cog):
         ):
             with db.User(ctx.author.id) as d:
                 if not d['screenshot']:
-                    return await ctx.send(translate(ctx, 'you_dsb_scr'))
+                    return await ctx.send(translate(ctx, 'you_dsb_scr'), ephemeral=True)
 
             with db.User(user.id) as d:
                 if not d['screenshot']:
-                    return await ctx.send(translate(ctx, 'sm1_dsb_scr'))
+                    return await ctx.send(translate(ctx, 'sm1_dsb_scr'), ephemeral=True)
 
             await ctx.response.defer()
             screenshot(user, text, f'tmp/{user.id}b.png')
