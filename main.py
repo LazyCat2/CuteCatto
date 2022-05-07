@@ -90,18 +90,23 @@ async def on_slash_command_error_(ctx: disnake.MessageCommandInteraction, error)
 
 @bot.event
 async def on_member_join(member):
-    with db.Data(member.guild.id) as d:
+    with db.User(member.id) as u, db.Data(member.guild.id) as d:
         if d['wlcm_cnl'] and d['wlcm_text'] and d['wlcm_enb']:
-            await bot.get_channel(int(d['wlcm_cnl'])).send(d['wlcm_text'].replace('@user', member.mention))
+            await bot.get_channel(int(d['wlcm_cnl'])). \
+                send(
+                d['wlcm_text'].replace('@user', member.mention),
+                allowed_mentions=disnake.AllowedMentions(
+                    everyone=False,
+                    users=([member] if u['ping'] else []),
+                    roles=[]
+                )
+            )
 
 
 @bot.application_command_check()
 async def check_commands(ctx):
     if not ctx.guild:
         await ctx.send(translate(ctx, 'dm_cmd'), ephemeral=True)
-        return False
-    if ctx.author.id in [918887384869924995]:
-        await ctx.send(translate(ctx, 'bot_ban'), ephemeral=True)
         return False
     return True
 

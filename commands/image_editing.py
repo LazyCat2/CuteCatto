@@ -2,6 +2,9 @@ from __main__ import *
 from PIL import Image, ImageDraw
 from simpledemotivators import Demotivator
 
+import db
+
+
 class ImageCommands(commands.Cog):
     def __init__(self, bot):
         @bot.slash_command(description='Погладить кого-то')
@@ -22,6 +25,14 @@ class ImageCommands(commands.Cog):
                 ctx, user: disnake.User = commands.param(name='юзер'),
                 text: str = commands.param(name='текст')
         ):
+            with db.User(ctx.author.id) as d:
+                if not d['screenshot']:
+                    return await ctx.send(translate(ctx, 'you_dsb_scr'))
+
+            with db.User(user.id) as d:
+                if not d['screenshot']:
+                    return await ctx.send(translate(ctx, 'sm1_dsb_scr'))
+
             await ctx.response.defer()
             screenshot(user, text, f'tmp/{user.id}b.png')
             await ctx.send(file=disnake.File(f'tmp/{user.id}b.png', 'screenshot.png'))

@@ -19,3 +19,21 @@ class Data:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         yaml.safe_dump(self.json, open(f'db/{self.data}.yaml', 'w'))
+
+
+class User:
+    def __init__(self, data):
+        self.data = str(data)
+
+    def __enter__(self):
+        if not os.path.exists(f'db/{self.data}.yaml'):
+            with open(f'db/{self.data}.yaml', 'w') as f: f.write('')
+        self.json = yaml.safe_load(open(f'db/{self.data}.yaml')) or {}
+        self.json = {
+            'ping': self.json.get('ping', True),
+            'screenshot': self.json.get('screenshot', True),
+        }
+        return self.json
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        yaml.safe_dump(self.json, open(f'db/{self.data}.yaml', 'w'))

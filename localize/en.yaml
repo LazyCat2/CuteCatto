@@ -2,16 +2,17 @@ this: English
 emj: 🇬🇧
 
 #command descriptions
-pet:         Pet someone
-blur:        Blur image or avatar
-clear:       Delete messages
-demotivator: Make demotivator
-invite:      Show invite info
-screenshot:  Makes FAKE screenshot of message
-about:       Bot info
-clicker:     Let's click :)
-user:        User info
-settings:    Change bot's settigs
+pet:           Pet someone
+blur:          Blur image or avatar
+clear:         Delete messages
+demotivator:   Make demotivator
+invite:        Show invite info
+screenshot:    Makes FAKE screenshot of message
+about:         Bot info
+clicker:       Let's click :)
+user:          User info
+settings:      Change bot's settigs
+user-settings: Make bot stop ping you
 
 #command parameters
 amount: amount
@@ -50,6 +51,10 @@ edit_wlcm_text:  Edit welcome text
 set_crnt_cnl:    Set to current channel
 wlcm_text_hint: '@user will become a user ping'
 door_and_wave:  "🚪 - Message won't be sent\n👋 - Message will be sent"
+on_screenshot:   Turn making fake screenshots with your messages on
+off_screenshot:  Turn making fake screenshots with your messages off
+on_ping:         Turn ping in welcome messages on
+off_ping:        Turn ping in welcome messages off
 
 #error messages
 usr_and_img:    You can select user's avatar OR image, not both
@@ -62,3 +67,5 @@ invalid_invite: This invite code is not valid
 unknown:        Something weird happened
 wrong:          It's not for you
 bot_ban:        You banned from using commands
+you_dsb_scr:    You disabled making screenshots of your messages, so you can't make screenshot of someone's else message
+sm1_dsb_scr:    This user disabled making screenshots of user's messages
