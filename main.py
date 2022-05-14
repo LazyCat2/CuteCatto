@@ -110,4 +110,4 @@ async def check_commands(ctx):
     return True
 
 
-bot.run(open('token_test.txt').read())
+bot.run(open('token.txt').read())
