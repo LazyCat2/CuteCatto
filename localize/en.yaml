@@ -69,3 +69,6 @@ wrong:          It's not for you
 bot_ban:        You banned from using commands
 you_dsb_scr:    You disabled making screenshots of your messages, so you can't make screenshot of someone's else message
 sm1_dsb_scr:    This user disabled making screenshots of user's messages
+big_rsltn:      Image resolution can't be more than
+big_size:       Image size can't be more than [SIZE] MB
+too_large:      Image that bot tried to send is very large

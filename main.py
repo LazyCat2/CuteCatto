@@ -33,10 +33,12 @@ errors = {
 }
 
 errors_text = {
-    'Command raised an exception: Forbidden: 403 Forbidden (error code: 50013): Missing Permissions'
-    : 'bot_perm_err'
+    'Command raised an exception: Forbidden: 403 Forbidden (error code: 50013): Missing Permissions':
+        'bot_perm_err',
+    'Command raised an exception: HTTPException: 413 Payload Too Large (error code: 40005): Request entity too large':
+        'too_large'
+
 }
-disnake.Embed.set_default_color(disnake.Color.blurple())
 
 
 @bot.event
@@ -56,6 +58,8 @@ async def on_ready():
             print(x, 'is loaded')
 
     await bot.change_presence(activity=disnake.Game(name='with cats :3'))
+    download(bot.user.avatar.url, 'tmp/me.png')
+    disnake.Embed.set_default_color(image_color('tmp/me.png'))
     print('Ready')
 
 
@@ -110,4 +114,4 @@ async def check_commands(ctx):
     return True
 
 
-bot.run(open('token.txt').read())
+bot.run(open('token_test.txt').read())

@@ -12,7 +12,6 @@ class ImageCommands(commands.Cog):
                       user: disnake.User = commands.param(name='юзер', default=None),
                       image: disnake.Attachment = commands.param(name='картинка', default=None),
                       ):
-            await ctx.response.defer()
             _, inp, out = await handle_image(ctx, user, image)
 
             if not _: return
@@ -33,7 +32,6 @@ class ImageCommands(commands.Cog):
                 if not d['screenshot']:
                     return await ctx.send(translate(ctx, 'sm1_dsb_scr'), ephemeral=True)
 
-            await ctx.response.defer()
             screenshot(user, text, f'tmp/{user.id}b.png')
             await ctx.send(file=disnake.File(f'tmp/{user.id}b.png', 'screenshot.png'))
 
@@ -44,7 +42,6 @@ class ImageCommands(commands.Cog):
                 user: disnake.User = commands.param(name='юзер', default=None),
                 image: disnake.Attachment = commands.param(name='картинка', default=None)
         ):
-            await ctx.response.defer()
             _, inp, out = await handle_image(ctx, user, image)
 
             if not _: return
@@ -69,7 +66,6 @@ class ImageCommands(commands.Cog):
                            max_value=250,
                            name='интенсивность'
                        )):
-            await ctx.response.defer()
             OriImage, inp, out = await handle_image(ctx, user, image)
             if not OriImage: return
 

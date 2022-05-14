@@ -30,7 +30,7 @@ class Stats(commands.Cog):
 {translate(ctx, 'ping')}: {round(bot.latency * 1000)} ms
 {len(bot.guilds)} {translate(ctx, 'servs')}
 {translate(ctx, 'madeby')}: {await bot.fetch_user(850367233582301194)}
-''', color=disnake.Color.blurple())
+''')
             embed.set_thumbnail(bot.user.avatar.url)
 
             await ctx.send(embed=embed, view=view)

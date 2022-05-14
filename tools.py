@@ -17,9 +17,11 @@ def download(url, path):
         f.write(requests.get(url).content)
 
 
-async def handle_image(ctx, user, image):
+async def handle_image(ctx, user, image: disnake.Attachment):
     inp = f'tmp/{ctx.id}_undone.png'
     out = f'tmp/{ctx.id}.png'
+
+    await ctx.responce.defer()
 
     if image and user:
         await ctx.send(translate(ctx, 'usr_and_img'))
@@ -32,6 +34,10 @@ async def handle_image(ctx, user, image):
     if user:
         download(user.display_avatar.with_format('png').url, inp)
     else:
+        if image.size > 8589934592:  # 8 mb
+            await ctx.send(translate(ctx, 'big_size').replace('[SIZE]', 8))
+            return None, inp, out
+
         await image.save(inp)
 
     try:
@@ -39,6 +45,12 @@ async def handle_image(ctx, user, image):
     except:
         await ctx.send(translate(ctx, 'format_err'))
         return None, inp, out
+
+    width, height = OriImage.size
+    if width > 1024 or height > 1024:
+        await ctx.send(translate(ctx, 'big_rsltn') + ' 1024x1024')
+        return None, inp, out
+
     return OriImage, inp, out
 
 
@@ -72,9 +84,9 @@ def screenshot(user, text, path, lang='en'):
 
 def image_color(path):
     OriImage = Image.open(path, mode='r')
-    boxImage = OriImage.filter(ImageFilter.GaussianBlur(radius=2048))
+    w, h = OriImage.size
 
-    color = boxImage.getpixel((0, 0))
+    color = OriImage.getpixel((w/2, h/2))
     try:
         a = tuple(list(color)[:-1]) if len(list(color)) == 4 else tuple(list(color))
         color = eval('0x%02x%02x%02x' % a)
