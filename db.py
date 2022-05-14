@@ -11,9 +11,13 @@ class Data:
         self.json = yaml.safe_load(open(f'db/{self.data}.yaml')) or {}
         self.json = {
             'lang': self.json.get('lang', 'en'),
+
             'wlcm_enb': self.json.get('wlcm_enb', False),
             'wlcm_text': self.json.get('wlcm_text', ''),
             'wlcm_cnl': self.json.get('wlcm_cnl'),
+
+            'min_join_age': self.json.get('min_join_age', 0),
+            'kick_new': self.json.get('kick_new', False),
         }
         return self.json
 

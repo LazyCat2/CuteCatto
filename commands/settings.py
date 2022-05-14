@@ -37,10 +37,10 @@ def create_embed(ctx, screen=None):
             return disnake.Embed(
                 title=translate(ctx, 'wlcm'),
                 description=(
-                    ('👋' if d['wlcm_cnl'] and d['wlcm_text'] and d['wlcm_enb'] else '🚪') + ' | ' +
-                    ((cnl + ' | ') if cnl else '') +
-                    d['wlcm_text'].split('\n')[0][:50] + '\n\n' +
-                    translate(ctx, 'door_and_wave')
+                        ('👋' if d['wlcm_cnl'] and d['wlcm_text'] and d['wlcm_enb'] else '🚪') + ' | ' +
+                        ((cnl + ' | ') if cnl else '') +
+                        d['wlcm_text'].split('\n')[0][:50] + '\n\n' +
+                        translate(ctx, 'door_and_wave')
                 )
             )
 
@@ -68,14 +68,15 @@ class Select(disnake.ui.Select):
             value='lang'
         )
 
-        with db.Data(ctx.guild.id) as d:
-            self.add_option(
-                label=translate(ctx, 'wlcm'),
-                description=d['wlcm_text'][:100].replace('\n', ' ') or translate(ctx, 'empty'),
-                emoji='👋' if d['wlcm_cnl'] and  d['wlcm_text'] and d['wlcm_enb'] else '🚪',
-                default=default == 'wlcm',
-                value='wlcm'
-            )
+        #  with db.Data(ctx.guild.id) as d:
+        #      self.add_option(
+        #          label=translate(ctx, 'wlcm'),
+        #          description=d['wlcm_text'][:100].replace('\n', ' ') or translate(ctx, 'empty'),
+        #          emoji='👋' if d['wlcm_cnl'] and d['wlcm_text'] and d['wlcm_enb'] else '🚪',
+        #          default=default == 'wlcm',
+        #          value='wlcm'
+        #      )
+        #  removed cuz of cringe
 
     async def callback(self, interaction: disnake.MessageInteraction):
         await interaction.response.edit_message(
@@ -165,10 +166,50 @@ class WlcmText(disnake.ui.Modal):
             embed=create_embed(interaction, 'wlcm')
         )
 
+
 class WlcmCnl(disnake.ui.Button):
     def __init__(self, ctx):
         super().__init__(
             label=translate(ctx, 'set_crnt_cnl'),
+            style=disnake.ButtonStyle.blurple
+        )
+
+    async def callback(self, interaction: disnake.MessageInteraction):
+        with db.Data(interaction.guild_id) as d:
+            d['wlcm_cnl'] = interaction.channel_id
+        await interaction.response.edit_message(
+            view=create_view(interaction, 'wlcm'),
+            embed=create_embed(interaction, 'wlcm')
+        )
+
+
+class Input(disnake.ui.Modal):
+    def __init__(self, ctx):
+        with db.Data(ctx.guild_id) as d:
+            super().__init__(
+                title=translate(ctx, 'set_min_join_age'),
+                components=[
+                    disnake.ui.TextInput(
+                        label=translate(ctx, 'days'),
+                        placeholder=translate(ctx, 'max_day_amt'),
+                        value=d['min_join_age'],
+                        custom_id='min_join_age',
+                        max_length=3
+                    )
+                ]
+            )
+
+    async def callback(self, interaction: disnake.ModalInteraction, /) -> None:
+        await interaction.response.edit_message(
+            view=create_view(ctx, 'mja'),
+            embed=create_embed(ctx, 'mja')
+        )
+
+
+class SetMinJoinAge(disnake.ui.Button):
+    def __init__(self, ctx):
+        super().__init__(
+            label=translate(ctx, 'set_min_join_age'),
             style=disnake.ButtonStyle.blurple
         )
 

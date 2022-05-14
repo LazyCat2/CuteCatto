@@ -23,9 +23,7 @@ async def clear_():
             print(path, 'removed')
 
 
-intents = disnake.Intents.default()
-intents.members = True
-bot = commands.InteractionBot(sync_commands=False, intents=intents)
+bot = commands.InteractionBot(sync_commands=False)
 start_at = round(time.time())
 guild = [937021403096551494]
 
@@ -90,6 +88,7 @@ async def on_slash_command_error_(ctx: disnake.MessageCommandInteraction, error)
 
 @bot.event
 async def on_member_join(member):
+    return
     with db.User(member.id) as u, db.Data(member.guild.id) as d:
         if d['wlcm_cnl'] and d['wlcm_text'] and d['wlcm_enb']:
             await bot.get_channel(int(d['wlcm_cnl'])). \
@@ -111,4 +110,4 @@ async def check_commands(ctx):
     return True
 
 
-bot.run(open('token.txt').read())
+bot.run(open('token_test.txt').read())
